@@ -1,4 +1,20 @@
 spring:
+  threads:
+    virtual:
+      enabled: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/razorpay-db
+    username: goutam
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -7,3 +23,51 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: false
+
+  kafka:
+    listener:
+      ack-mode: manual
+
+    bootstrap-servers: ${KAFKA_BROKERS:localhost:29092}
+
+    producer:
+      acks: all
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 5
+        retries: 3
+        spring.json.add.type.headers: false
+
+    consumer:
+      group-id: razorpay-clone-group
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.goutam.razorpay.*"
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: java.util.LinkedHashMap
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+
+MERCHANT_SERVICE_URI: localhost:8081
+
+app:
+  rate-limit:
+    method: fixed
+    use-case:
+      api-key:
+        requests-per-minute: 5
+
+  kafka:
+    topics:
+      payment: payments.events
+      order: orders.events
+      refund: refund.events
+      settlement: settlement.events
