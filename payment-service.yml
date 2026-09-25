@@ -1,0 +1,8 @@
+server:
+  port: 9030
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/razorpay-payment-Db
+    username: postgres
+    password: Admin@2002
