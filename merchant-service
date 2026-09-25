@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/razorpay-merchant-Db
+    url: jdbc:postgresql://localhost:5432/merchant-service-DB
     username: postgres
     password: Admin@2002
 
