@@ -4,6 +4,8 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/razorpay-merchant-Db
+    username: postgres
+    password: Admin@2002
 
 jwt:
   secret-key: oqirnoqenfoenfonwofnwiofnwrfwf42r1103r5j42ofn934
