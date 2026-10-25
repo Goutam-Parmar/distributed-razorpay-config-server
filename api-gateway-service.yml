@@ -34,7 +34,7 @@ spring:
               predicates:
                 - Path=/v1/vault/**
 
-            - id: operation-service
-              uri: lb://operation-service
+            - id: operations-service
+              uri: lb://operations-service
               predicates:
-                - Path=/v1/operations/**
+                - Path=/v1/operations/**,/webhook/**
