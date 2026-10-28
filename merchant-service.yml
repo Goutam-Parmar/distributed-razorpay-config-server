@@ -1,14 +1,15 @@
+
 server:
   port: 9010
 
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/merchant-service-DB
-    username: postgres
-    password: Admin@2002
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
 jwt:
-  secret-key: oqirnoqenfoenfonwofnwiofnwrfwf42r1103r5j42ofn934
+  secret-key: ${JWT_SECRET_KEY}
 
-  webhook:
-    secret-encryption-key: uJZKONZe6G7AUe9gq8NaFqMDzavCL3YpxxSjlQujqUE=
+webhook:
+  secret-encryption-key: ${WEBHOOK_SECRET_ENCRYPTION_KEY}
