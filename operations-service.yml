@@ -4,11 +4,11 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/operation-service-DB
-    username: postgres
-    password: Admin@2002
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
 app:
   webhook:
     delivery:
-      redis-key:
+      redis-key: ${WEBHOOK_DELIVERY_REDIS_KEY:}
       poll-batch-size: 100
