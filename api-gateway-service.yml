@@ -1,5 +1,4 @@
 
-
 server:
   port: 8080
 
@@ -17,6 +16,8 @@ app:
       api-key:
         requests-per-minute: 200
 
+jwt:
+  secret-key: ${JWT_SECRET_KEY}
 
 spring:
   cloud:
