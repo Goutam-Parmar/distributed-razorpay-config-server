@@ -9,6 +9,7 @@ app:
     public-routes:
       - "/v1/auth/**"
       - "/webhook/**"
+      - "/actuator/prometheus"
 
   rate-limit:
     method: fixed
