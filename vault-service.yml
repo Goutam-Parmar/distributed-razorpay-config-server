@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/vault-service-DB
-    username: postgres
-    password: Admin@2002
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
 vault:
-  master-key:NFnojnor3woodnfoarwjornoanpnffpiawnrpf    
+  master-key: ${VAULT_MASTER_KEY}
